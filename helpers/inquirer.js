@@ -107,7 +107,7 @@ export const mostrarListadoChecklist = async (tareas = []) => {
     {
       type: 'checkbox',
       name: 'ids',
-      message: 'Selecciones',
+      message: 'Tareas seleccionadas:',
       choices,
     },
   ];
