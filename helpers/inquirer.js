@@ -54,6 +54,63 @@ export const leerInput = async (message) => {
       },
     },
   ];
+
   const { desc } = await inquirer.prompt(question);
   return desc;
+};
+
+export const listadoTareaBorrar = async (tareas = []) => {
+  const choices = tareas.map((tarea, i) => {
+    const idx = i + 1;
+    return {
+      value: tarea.id,
+      name: `${idx}. ${tarea.desc}`,
+    };
+  });
+
+  choices.unshift({ value: '0', name: '0. Cancelar' });
+
+  const preguntas = [
+    {
+      type: 'list',
+      name: 'id',
+      choices,
+    },
+  ];
+  const { id } = await inquirer.prompt(preguntas);
+  return id;
+};
+
+export const confirmar = async (message) => {
+  const question = [
+    {
+      type: 'confirm',
+      name: 'ok',
+      message,
+    },
+  ];
+  const { ok } = await inquirer.prompt(question);
+  return ok;
+};
+
+export const mostrarListadoChecklist = async (tareas = []) => {
+  const choices = tareas.map((tarea, i) => {
+    const idx = i + 1;
+    return {
+      value: tarea.id,
+      name: `${idx}. ${tarea.desc}`,
+      checked: tarea.completadoEn ? true : false,
+    };
+  });
+
+  const pregunta = [
+    {
+      type: 'checkbox',
+      name: 'ids',
+      message: 'Selecciones',
+      choices,
+    },
+  ];
+  const { ids } = await inquirer.prompt(pregunta);
+  return ids;
 };

@@ -7,6 +7,12 @@ export class Tareas {
     this._listado = {};
   }
 
+  borrarTarea(id = '') {
+    if (this._listado[id]) {
+      delete this._listado[id];
+    }
+  }
+
   get listadoArr() {
     const listado = [];
     Object.keys(this._listado).forEach((key) => {
@@ -52,6 +58,20 @@ export class Tareas {
           idx += 1;
           console.log(`${idx.toString().green}. ${desc} :: ${estado}`);
         }
+      }
+    });
+  }
+  toggleCompletadas(ids = []) {
+    ids.forEach((id) => {
+      const tarea = this._listado[id];
+      if (!tarea.completadoEn) {
+        tarea.completadoEn = new Date().toISOString();
+      }
+    });
+
+    this.listadoArr.forEach((tarea) => {
+      if (!ids.includes(tarea.id)) {
+        this._listado[tarea.id].completadoEn = null;
       }
     });
   }
