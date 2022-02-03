@@ -12,11 +12,34 @@
 8. snippets: nfn, anfn
 9. estructuras: do while, switch, async/await, template_string, destructuring
 10. Manejo de archivos txt/json con fs: existsSync, readFilreSync, writeFileSync
+11. github token= generar token en github settings profile y usarlo en lugar de password
 
 ### Inicial command: (si requiere iniciar proyecto desde cero)
 
-`mkdir 02-todo && cd $_ && npm init -y && mkdir models helpers db && touch app.js .gitignore && npm i colors inquirer uuid && code .`
+```sh
+mkdir 02-todo &&
+cd $_ &&
+npm init -y &&
+mkdir models helpers db &&
+touch app.js .gitignore &&
+npm i colors inquirer uuid &&
+code .
+```
 
 ### Instalacion
 
-`npm install && npm start`
+```sh
+npm install && npm start
+```
+
+### github commands
+
+```sh
+git init
+git status
+git add .
+git commit -m "mi commit"
+git remote **
+git branch -M main
+git push -u origin main
+```
